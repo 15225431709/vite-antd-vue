@@ -14,7 +14,7 @@
             /></span>
           </div>
         </div>
-        <div class="card-footer">日均销售额 ￥123</div>
+        <div class="card-footer">日均销售额 <span>￥123</span></div>
       </a-card>
       <a-card size="small" :bordered="false" class="card">
         <div class="card-content">
@@ -22,7 +22,7 @@
           <div class="card-number">8848</div>
           <div class="card-chart" id="chart"></div>
         </div>
-        <div class="card-footer">日访问量</div>
+        <div class="card-footer">日访问量 <span>1,234</span></div>
       </a-card>
       <a-card size="small" :bordered="false" class="card">
         <div class="card-content">
@@ -30,19 +30,29 @@
           <div class="card-number">6560</div>
           <div class="card-chart" id="line"></div>
         </div>
-        <div class="card-footer">转化率</div>
+        <div class="card-footer">转化率 <span>60%</span></div>
       </a-card>
       <a-card size="small" :bordered="false" class="card">
         <div class="card-content">
           <div class="card-title">运营活动效果</div>
           <div class="card-number">78%</div>
           <div class="card-chart">
-            <div class="progress">
-              <div class="active" :style="activeWidth"></div>
+            <!-- <div class="progress">
+              <div class="active" :style="activeWidth"></div>              
+            </div> -->
+            <div style="width: 15rem">
+              <a-progress :percent="78" :show-info="false" />
             </div>
           </div>
         </div>
-        <div class="card-footer">周同比： 日同比：</div>
+        <div class="card-footer">
+          <span style="margin: 0 0.5rem"
+            >周同比：12% <img class="icon" src="../../../static/icon/up.png"
+          /></span>
+          <span style="margin: 0 0.5rem"
+            >日同比：11% <img class="icon" src="../../../static/icon/down.png"
+          /></span>
+        </div>
       </a-card>
     </div>
   </div>
@@ -67,11 +77,11 @@ export default {
         height: 60,
       },
       title: "看板",
-      active: 0.78
+      active: 0.78,
     });
     let activeWidth = computed(() => {
-      return {width: 15*state.active+'rem'}
-    }) 
+      return { width: 15 * state.active + "rem" };
+    });
     onMounted(() => {
       console.log(chartColumn);
       const data = state.basicColumnChartProp.data;
@@ -107,7 +117,7 @@ export default {
 
     return {
       ...toRefs(state),
-      activeWidth
+      activeWidth,
     };
   },
 };
@@ -147,12 +157,12 @@ export default {
       }
       .progress {
         width: 15rem;
-        height: .5rem;
+        height: 0.5rem;
         background: #f5f5f5;
       }
       .active {
         background: rgb(19, 194, 194);
-        height: .5rem;
+        height: 0.5rem;
       }
     }
     .card-footer {
