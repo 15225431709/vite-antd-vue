@@ -1,0 +1,146 @@
+<template>
+  <div class="content">
+    <div class="top-content">
+      <a-card size="small" :bordered="false" class="card">
+        <div class="card-content">
+          <div class="card-title">总销售额</div>
+          <div class="card-number">￥126,560</div>
+          <div class="card-chart">
+            <span style="margin: 0 0.5rem"
+              >周同比：12% <img class="icon" src="../../../static/icon/up.png"
+            /></span>
+            <span style="margin: 0 0.5rem"
+              >日同比：11%
+              <img class="icon" src="../../../static/icon/down.png"
+            /></span>
+          </div>
+        </div>
+        <div class="card-footer">日均销售额 ￥123</div>
+      </a-card>
+      <a-card size="small" :bordered="false" class="card">
+        <div class="card-content">
+          <div class="card-title">访问量</div>
+          <div class="card-number">8848</div>
+          <div class="card-chart" id="chart"></div>
+        </div>
+        <div class="card-footer">日访问量</div>
+      </a-card>
+      <a-card size="small" :bordered="false" class="card">
+        <div class="card-content">
+          <div class="card-title">支付笔数</div>
+          <div class="card-number">6560</div>
+          <div class="card-chart"></div>
+        </div>
+        <div class="card-footer">转化率</div>
+      </a-card>
+      <a-card size="small" :bordered="false" class="card">
+        <div class="card-content">
+          <div class="card-title">运营活动效果</div>
+          <div class="card-number">78%</div>
+          <div class="card-chart"></div>
+        </div>
+        <div class="card-footer">周同比： 日同比：</div>
+      </a-card>
+    </div>
+  </div>
+</template>
+<script lang="ts">
+import { Chart } from "@antv/g2";
+import { reactive, toRefs, onMounted } from "vue";
+export default {
+  setup() {
+    const state = reactive({
+      basicColumnChartProp: {
+        data: [
+          // { genre: "Sports", sold: 275 },
+          // { genre: "Strategy", sold: 115 },
+          // { genre: "Action", sold: 120 },
+          // { genre: "Shooter", sold: 350 },
+          // { genre: "Other", sold: 150 },
+          { genre: "A", sold: 275 },
+          { genre: "B", sold: 115 },
+          { genre: "C", sold: 120 },
+          { genre: "D", sold: 350 },
+          { genre: "E", sold: 150 },
+        ],
+        container: "chart",
+        width: 240,
+        height: 50,
+      },
+      title: "看板",
+    });
+    onMounted(() => {
+      const data = state.basicColumnChartProp.data;
+      // Step 1: 创建 Chart 对象
+      const chart = new Chart({
+        container: state.basicColumnChartProp.container, // 指定图表容器 ID
+        width: state.basicColumnChartProp.width, // 指定图表宽度
+        height: state.basicColumnChartProp.height, // 指定图表高度
+        renderer: "svg",
+        padding: 0,
+      });
+      chart.legend(false)
+      // chart.tooltip(false)
+      // Step 2: 载入数据源
+      chart.source(data);
+      // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+      chart.interval().position("genre*sold").color("genre");
+      // Step 4: 渲染图表
+      chart.render();
+    });
+    // let test = () => {
+
+    // };
+    return {
+      ...toRefs(state),
+    };
+  },
+};
+</script>
+<style lang="scss" scoped>
+.content {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1rem 0;
+}
+.top-content {
+  display: flex;
+  justify-content: center;
+  .card {
+    width: 22.5%;
+    margin: 0 1%;
+    padding: 0;
+    .card-title {
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+    .card-number {
+      font-size: 30px;
+      line-height: 38px;
+    }
+    .card-chart {
+      height: 50px;
+      //   line-height: 50px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .icon {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+    .card-footer {
+      height: 40px;
+      padding-top: 4px;
+      line-height: 36px;
+      border-top: 1px solid #e8e8e8;
+    }
+  }
+}
+.ant-card-actions {
+  height: 30px;
+  line-height: 30px;
+}
+</style>
