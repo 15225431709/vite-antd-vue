@@ -10,7 +10,8 @@
               >周同比：12% <img class="icon" src="../../../static/icon/up.png"
             /></span>
             <span style="margin: 0 0.5rem"
-              >日同比：11% <img class="icon" src="../../../static/icon/down.png"
+              >日同比：11%
+              <img class="icon" src="../../../static/icon/down.png"
             /></span>
           </div>
         </div>
@@ -20,7 +21,8 @@
         <div class="card-content">
           <div class="card-title">访问量</div>
           <div class="card-number">8848</div>
-          <div class="card-chart" id="chart"></div>
+          <!-- <div class="card-chart" id="chart"></div> -->
+          <area-chart :cardWidth="cardWidth" class="card-chart"></area-chart>
         </div>
         <div class="card-footer">日访问量 <span>1,234</span></div>
       </a-card>
@@ -28,7 +30,11 @@
         <div class="card-content">
           <div class="card-title">支付笔数</div>
           <div class="card-number">6560</div>
-          <div class="card-chart" id="line"></div>
+          <!-- <div class="card-chart" id="line"></div> -->
+          <column-chart
+            :cardWidth="cardWidth"
+            class="card-chart"
+          ></column-chart>
         </div>
         <div class="card-footer">转化率 <span>60%</span></div>
       </a-card>
@@ -37,9 +43,6 @@
           <div class="card-title">运营活动效果</div>
           <div class="card-number">78%</div>
           <div class="card-chart">
-            <!-- <div class="progress">
-              <div class="active" :style="activeWidth"></div>              
-            </div> -->
             <div style="width: 15rem">
               <a-progress :percent="78" :show-info="false" />
             </div>
@@ -58,66 +61,31 @@
   </div>
 </template>
 <script lang="ts">
-import { Chart } from "@antv/g2";
-import { reactive, toRefs, onMounted, computed } from "vue";
-import { chartArea, chartColumn } from "../../utils/chart.ts";
+import { reactive, toRefs, onMounted, computed, nextTick } from "vue";
+import AreaChart from "../../components/utils/AreaChart.vue";
+import ColumnChart from "../../components/utils/ColumnChart.vue";
 export default {
+  components: {
+    AreaChart,
+    ColumnChart,
+  },
   setup() {
+
     const state = reactive({
-      basicColumnChartProp: {
-        data: chartColumn,
-        container: "chart",
-        width: 300,
-        height: 60,
-      },
-      lineChart: {
-        data: chartArea,
-        container: "line",
-        width: 300,
-        height: 60,
-      },
       title: "看板",
       active: 0.78,
+      cardWidth: 240
     });
-    let activeWidth = computed(() => {
-      return { width: 15 * state.active + "rem" };
-    });
+
     onMounted(() => {
-      console.log(chartColumn);
-      const data = state.basicColumnChartProp.data;
-      // Step 1: 创建 Chart 对象
-      const chart = new Chart({
-        container: state.basicColumnChartProp.container, // 指定图表容器 ID
-        width: state.basicColumnChartProp.width, // 指定图表宽度
-        height: state.basicColumnChartProp.height, // 指定图表高度
-        renderer: "svg",
-        padding: 0,
-      });
-      chart.legend(false);
-      // chart.tooltip(false)
-      // Step 2: 载入数据源
-      chart.source(data);
-      // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
-      chart.interval().position("year*sales").color("year");
-      // Step 4: 渲染图表
-      chart.render();
-      const line = new Chart({
-        container: state.lineChart.container, // 指定图表容器 ID
-        width: state.lineChart.width, // 指定图表宽度
-        height: state.lineChart.height, // 指定图表高度
-        renderer: "svg",
-        padding: 0,
-      });
-      line.legend(false);
-      line.source(state.lineChart.data);
-      line.line().position("year*value");
-      line.area().position("year*value");
-      line.render();
+    const window: any = document.getElementsByClassName("card");
+    let width = Number(window[1].offsetWidth)
+    state.cardWidth = Number(width)*0.75
+    console.log(state.cardWidth)
     });
 
     return {
-      ...toRefs(state),
-      activeWidth,
+      ...toRefs(state)
     };
   },
 };
@@ -166,9 +134,9 @@ export default {
       }
     }
     .card-footer {
-      height: 40px;
-      padding-top: 4px;
-      line-height: 36px;
+      height: 30px;
+      // padding-top: 4px;
+      line-height: 30px;
       border-top: 1px solid #e8e8e8;
     }
   }
