@@ -60,16 +60,20 @@
       style="width: 96%; margin: 0.75rem 2%; background: #fff; padding: 0.5rem 0.75rem"
     >
       <a-tabs :activeKey="activeKey" @change="callback">
-        <a-tab-pane key="1" tab="Tab 1"> Content of Tab Pane 1 </a-tab-pane>
-        <a-tab-pane key="2" tab="Tab 2" force-render> Content of Tab Pane 2 </a-tab-pane>
-        <a-tab-pane key="3" tab="Tab 3"> Content of Tab Pane 3 </a-tab-pane>
+        <a-tab-pane key="1" tab="销售额">
+          <div id="sales"></div>
+        </a-tab-pane>
+        <a-tab-pane key="2" tab="访问量">
+          <div id="nums"></div>
+        </a-tab-pane>
+
         <template #tabBarExtraContent>
           <!-- <a-button> Extra Action </a-button> -->
           <div style="display: flex; justify-content: flex-start">
             <div class="time-select">今日</div>
-            <div class="time-select">今日</div>
-            <div class="time-select">今日</div>
-            <div class="time-select">今日</div>
+            <div class="time-select">本周</div>
+            <div class="time-select">本月</div>
+            <div class="time-select">全年</div>
             <div class="time-picker">
               <a-date-picker
                 :value="formState.startTime"
@@ -77,14 +81,14 @@
                 type="date"
                 placeholder="Pick a date"
               />
-              <span> - </span>
+              <span> ~ </span>
               <a-date-picker
                 :value="formState.endTime"
                 show-time
                 type="date"
                 placeholder="Pick a date"
               />
-            </div>           
+            </div>
           </div>
         </template>
       </a-tabs>
@@ -92,9 +96,11 @@
   </div>
 </template>
 <script lang="ts">
+import { Chart } from "@antv/g2";
 import { ref, reactive, toRefs, onMounted, computed, nextTick } from "vue";
 import AreaChart from "../../components/utils/AreaChart.vue";
 import ColumnChart from "../../components/utils/ColumnChart.vue";
+import { chartColumn } from "../../utils/chart";
 export default {
   components: {
     AreaChart,
@@ -108,12 +114,35 @@ export default {
       activeKey: "1",
       formState: {
         startTime: "",
-        endTime: ""
-      }
+        endTime: "",
+      },
+      chartData: {
+        data: chartColumn,
+        container: "sales",
+        width: 500,
+        height: 250,
+      },
     });
     const area = ref<null | HTMLElement>(null);
     const renderArea = () => {
       // area.value.render();
+      const chart = new Chart({
+        container: state.chartData.container,
+        autoFit: true,
+        height: state.chartData.height,
+        padding: 0,
+      });
+      chart.legend(false);
+      chart.scale("value", {
+        alias: "销售额(万)",
+        nice: true,
+      });
+      chart.tooltip({
+        showMarkers: true,
+      });
+      chart.data(state.chartData.data);
+      chart.interval().position("year*sales").color("year");
+      chart.render();
     };
     let callback = (val: any) => {
       // console.log(val)
@@ -124,6 +153,7 @@ export default {
         const window: any = document.getElementsByClassName("card");
         let width = Number(window[1].offsetWidth);
         state.cardWidth = Number(width) * 0.9;
+        // state.chartData.width = Number(width)*4
         console.log(state.cardWidth);
         renderArea();
       });
@@ -190,10 +220,11 @@ export default {
 }
 .time-select {
   margin: 0 0.5rem;
-  color: red;
+  // color: #f5222d;
+  color: #1890ff;
 }
 .time-picker {
-  margin: 0 .5rem
+  margin: 0 0.5rem;
 }
 .ant-card-actions {
   height: 30px;
