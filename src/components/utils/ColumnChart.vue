@@ -3,7 +3,7 @@
 </template>
 <script>
 import { Chart } from "@antv/g2";
-import { reactive, onMounted, toRefs } from "vue";
+import { reactive, onMounted, toRefs, watch } from "vue";
 import { chartColumn } from "../../utils/chart";
 export default {
   props: {
@@ -21,7 +21,13 @@ export default {
         height: 60,
       },
     });
-    onMounted(() => {
+    watch(() => props.cardWidth, (val) => {
+        state.basicColumnChartProp.width = val;
+        render();
+      }
+    );
+    onMounted(() => {});
+    const render = () => {
       const chart = new Chart({
         container: state.basicColumnChartProp.container, // 指定图表容器 ID
         width: state.basicColumnChartProp.width, // 指定图表宽度
@@ -33,9 +39,10 @@ export default {
       chart.data(state.basicColumnChartProp.data);
       chart.interval().position("year*sales").color("year");
       chart.render();
-    });
+    };
     return {
       ...toRefs(state),
+      render,
     };
   },
 };

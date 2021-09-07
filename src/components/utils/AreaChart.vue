@@ -3,8 +3,9 @@
 </template>
 <script>
 import { Chart } from "@antv/g2";
-import { reactive, onMounted, toRefs, nextTick } from "vue";
+import { reactive, onMounted, toRefs, watch } from "vue";
 import { chartArea } from "../../utils/chart";
+
 export default {
   props: {
     cardWidth: {
@@ -21,23 +22,29 @@ export default {
         height: 60,
       },
     });
-    onMounted(() => {
+    watch(() => props.cardWidth, (val) => {
+        state.lineChart.width = val;
+        render();
+      }
+    );
+    onMounted(() => {});
+    const render = () => {
       const chart = new Chart({
-        container: state.lineChart.container, // 指定图表容器 ID
-        width: state.lineChart.width, // 指定图表宽度
-        height: state.lineChart.height, // 指定图表高度
-        renderer: "svg",
-        padding: 0,
-      });
+          container: state.lineChart.container, // 指定图表容器 ID
+          width: state.lineChart.width, // 指定图表宽度
+          height: state.lineChart.height, // 指定图表高度
+          renderer: "svg",
+          padding: 0,
+        });
       chart.legend(false);
       chart.data(state.lineChart.data);
       chart.line().position("year*value");
       chart.area().position("year*value");
       chart.render();
-    });
-
+    };
     return {
       ...toRefs(state),
+      render,
     };
   },
 };
