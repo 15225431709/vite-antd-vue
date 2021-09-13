@@ -61,7 +61,7 @@
     >
       <a-tabs :activeKey="activeKey" @change="callback">
         <a-tab-pane key="1" tab="销售额">
-          <div id="sales"></div>
+          <div class="tab-content" id="sales" style="width: 67.5%"></div>
         </a-tab-pane>
         <a-tab-pane key="2" tab="访问量">
           <div id="nums"></div>
@@ -130,13 +130,9 @@ export default {
         container: state.chartData.container,
         autoFit: true,
         height: state.chartData.height,
-        padding: 0,
+        padding: [20, 25, 60, 50],
       });
-      chart.legend(false);
-      chart.scale("value", {
-        alias: "销售额(万)",
-        nice: true,
-      });
+      // chart.legend(false);
       chart.tooltip({
         showMarkers: true,
       });
@@ -229,5 +225,8 @@ export default {
 .ant-card-actions {
   height: 30px;
   line-height: 30px;
+}
+.tab-content {
+  // height: 400px;
 }
 </style>
