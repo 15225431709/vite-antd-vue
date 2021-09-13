@@ -64,6 +64,7 @@
         </div>
       </a-card>
     </div>
+
     <div class="tabs">
       <a-tabs :activeKey="activeKey" @change="callback" :tabBarStyle="{ color: red }">
         <a-tab-pane key="1" tab="销售额">
@@ -102,36 +103,15 @@
             </div>
           </div>
         </a-tab-pane>
-        <template #tabBarExtraContent>
-          <div style="display: flex; justify-content: flex-start">
-            <a class="time-select" :class="active == index ? 'active':''" v-for="(item, index) in selectList" :key="index" @click="select(index)">
-              {{ item }}
-            </a>
-            <div class="time-picker">
-              <a-date-picker
-                :value="formState.startTime"
-                show-time
-                type="date"
-                placeholder="Pick a date"
-              />
-              <span> - </span>
-              <a-date-picker
-                :value="formState.endTime"
-                show-time
-                type="date"
-                placeholder="Pick a date"
-              />
-            </div>
-          </div>
-        </template>
       </a-tabs>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { ref, reactive, toRefs, onMounted, computed, nextTick } from "vue";
+import { ref, reactive, toRefs, onMounted, nextTick } from "vue";
 import AreaChart from "../../components/utils/AreaChart.vue";
 import ColumnChart from "../../components/utils/ColumnChart.vue";
+
 export default {
   components: {
     AreaChart,
@@ -146,6 +126,7 @@ export default {
         startTime: "",
         endTime: "",
       },
+
       active: 0,
       sales: [
         { name: "白鹭岛 1 号店", sale: "1234.56" },
@@ -165,15 +146,11 @@ export default {
     let callback = (val: any) => {
       state.activeKey = val;
     };
-    let select = (val: Number|String) => {
-      state.active = Number(val)
+    let select = (val: Number | String) => {
+      state.active = Number(val);
     };
     onMounted(() => {
       nextTick(() => {
-        const window: any = document.getElementsByClassName("card");
-        let width = Number(window[1].offsetWidth);
-        state.cardWidth = Number(width) * 0.9;
-        console.log(state.cardWidth);
         renderArea();
       });
     });
@@ -183,7 +160,7 @@ export default {
       area,
       renderArea,
       callback,
-      select
+      select,
     };
   },
 };

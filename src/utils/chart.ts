@@ -1,5 +1,5 @@
 //面积图
-const chartArea: Array = [{
+const chartArea: Array<any> = [{
     year: '1991',
     value: 15468
 }, {
@@ -28,7 +28,7 @@ const chartArea: Array = [{
     value: 33233
 }];
 //柱状图
-const chartColumn: Array = [{
+const chartColumn: Array<any> = [{
     year: '1月',
     sales: 38
 }, {
@@ -54,16 +54,16 @@ const chartColumn: Array = [{
     sales: 38
 }, {
     year: '9月',
-    sales: 3
+    sales: 33
 }, {
     year: '10月',
-    sales: 0
+    sales: 19
 }, {
     year: '11月',
-    sales: 0
+    sales: 27
 }, {
     year: '12月',
-    sales: 0
+    sales: 22
 }];
 
 export {
