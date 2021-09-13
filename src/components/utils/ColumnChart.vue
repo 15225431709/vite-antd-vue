@@ -1,5 +1,5 @@
 <template>
-  <div id="line"></div>
+  <div :id="id"></div>
 </template>
 <script>
 import { Chart } from "@antv/g2";
@@ -7,36 +7,48 @@ import { reactive, onMounted, toRefs, watch } from "vue";
 import { chartColumn } from "../../utils/chart";
 export default {
   props: {
-    cardWidth: {
-      type: Number,
-      default: 275,
+    height: {
+      type: String,
+      default: 60,
+    },
+    container: {
+      type: String,
+      default: "",
+    },
+    size: {
+      type: String,
+      default: "normal",
     },
   },
   setup(props) {
     const state = reactive({
-      basicColumnChartProp: {
-        data: chartColumn,
-        container: "line",
-        width: props.cardWidth,
-        height: 60,
-      },
+      chartData: chartColumn,
+      id: props.container,
     });
-    watch(() => props.cardWidth, (val) => {
-        state.basicColumnChartProp.width = val;
-        render();
-      }
-    );
-    onMounted(() => {});
+    // watch(() => props.cardWidth, (val) => {
+    //     state.basicColumnChartProp.width = val;
+    //     render();
+    //   }
+    // );
+    onMounted(() => {
+      render();
+    });
     const render = () => {
+      let padding;
+      if (props.size == "small") {
+        padding = [0, 20, 0, 0];
+      } else {
+        padding = [25, 25, 50, 50];
+      }
       const chart = new Chart({
-        container: state.basicColumnChartProp.container, // 指定图表容器 ID
-        width: state.basicColumnChartProp.width, // 指定图表宽度
-        height: state.basicColumnChartProp.height, // 指定图表高度
+        container: props.container, // 指定图表容器 ID
+        autoFit: true,
+        height: Number(props.height), // 指定图表高度
         renderer: "svg",
-        padding: 0,
+        padding: padding,
       });
       chart.legend(false);
-      chart.data(state.basicColumnChartProp.data);
+      chart.data(state.chartData);
       chart.interval().position("year*sales").color("year");
       chart.render();
     };
