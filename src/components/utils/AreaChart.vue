@@ -1,5 +1,5 @@
 <template>
-  <div id="chart"></div>
+  <div :id="id"></div>
 </template>
 <script>
 import { Chart } from "@antv/g2";
@@ -8,36 +8,44 @@ import { chartArea } from "../../utils/chart";
 
 export default {
   props: {
-    cardWidth: {
-      type: Number,
-      default: 275,
+    height: {
+      type: String,
+      default: 60,
+    },
+    container: {
+      type: String,
+      default: "",
+    },
+    size: {
+      type: String,
+      default: "normal",
     },
   },
   setup(props) {
     const state = reactive({
-      lineChart: {
-        data: chartArea,
-        container: "chart",
-        width: props.cardWidth,
-        height: 60,
-      },
+      chartData: chartArea,
+      id: props.container,
     });
-    watch(() => props.cardWidth, (val) => {
-        state.lineChart.width = val;
-        render();
-      }
-    );
-    onMounted(() => {});
+
+    onMounted(() => {
+      render();
+    });
     const render = () => {
+      let padding;
+      if (props.size == "small") {
+        padding = [0, 20, 0, 0];
+      } else {
+        padding = [25, 25, 50, 50];
+      }
       const chart = new Chart({
-          container: state.lineChart.container, // 指定图表容器 ID
-          width: state.lineChart.width, // 指定图表宽度
-          height: state.lineChart.height, // 指定图表高度
-          renderer: "svg",
-          padding: 0,
-        });
+        container: props.container, // 指定图表容器 ID
+        autoFit: true, //图表自适应宽度
+        height: Number(props.height), // 指定图表高度
+        renderer: "svg",
+        padding: padding,
+      });
       chart.legend(false);
-      chart.data(state.lineChart.data);
+      chart.data(state.chartData);
       chart.line().position("year*value");
       chart.area().position("year*value");
       chart.render();
@@ -49,24 +57,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.card-chart {
-  height: 60px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  .icon {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-  .progress {
-    width: 15rem;
-    height: 0.5rem;
-    background: #f5f5f5;
-  }
-  .active {
-    background: rgb(19, 194, 194);
-    height: 0.5rem;
-  }
-}
-</style>
