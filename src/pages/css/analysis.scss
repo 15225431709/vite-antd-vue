@@ -99,3 +99,16 @@
         }
     }
 }
+
+.charts {
+    width: 96%;
+    margin: 0.75rem 2%;
+    display: flex;
+    .left {
+        width: 48%;       
+    }
+    .right {
+        width: 48%;
+        margin-left: 4%;
+    }
+}

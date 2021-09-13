@@ -1,14 +1,15 @@
 <template>
-  <div>
+  <div style="background: rgb(0, 21, 41)">
     <a-layout-sider
       :inline-collapsed="collapsed"
       :trigger="null"
+      breakpoint="lg"
       collapsible
       class="menu"
       mode="inline"
     >
       <div class="logo">
-        <ICON :name="'#icon-shujukanban'" :customStyle="iconstyle"></ICON>
+        <ICON name="#icon-chart" :customStyle="iconstyle"></ICON>
         <div class="logo-title">ANTD DESIGN VUE</div>
       </div>
       <a-menu
@@ -18,17 +19,24 @@
         theme="dark"
         @openChange="onOpenChange"
       >
-        <a-sub-menu v-for="item in menus" :key="item.key" :title="item.title">
-          <a-menu-item v-for="menu in item.subMenus" :key="menu.name" @click="selectMenu(menu.name)">{{
-            menu.title
-          }}</a-menu-item>
+        <a-sub-menu v-for="item in menus" :key="item.key">
+          <template #icon>
+            <ICON :name="item.icon"></ICON>
+          </template>
+          <template #title>{{ item.title }}</template>
+          <a-menu-item
+            v-for="menu in item.subMenus"
+            :key="menu.name"
+            @click="selectMenu(menu.name)"
+            >{{ menu.title }}</a-menu-item
+          >
         </a-sub-menu>
       </a-menu>
     </a-layout-sider>
   </div>
 </template>
 <script lang="ts">
-import { reactive, toRefs} from "vue";
+import { reactive, toRefs } from "vue";
 import { menu } from "../../utils/menus";
 export default {
   name: "Menu",
@@ -44,9 +52,9 @@ export default {
       menus: menu,
       openKeys: ["Dashboard"],
       iconstyle: {
-        color: '#d81e06',
-        fontSize: '1.5rem'
-      }
+        color: "#d81e06",
+        fontSize: "1.5rem",
+      },
     });
     //监听菜单选择
     const onOpenChange = (keys: string[]) => {
@@ -54,25 +62,25 @@ export default {
         let obj = [];
         obj.push(keys[keys.length - 1]);
         state.openKeys = obj;
-      }else {
-        state.openKeys = []
+      } else {
+        state.openKeys = [];
       }
     };
     //子菜单，路由跳转
     const selectMenu = (keys: string) => {
-      console.log(keys)
-    }
+      console.log(keys);
+    };
     return {
       ...toRefs(state),
       onOpenChange,
-      selectMenu
+      selectMenu,
     };
   },
 };
 </script>
 <style scoped lang="scss">
 .menu {
-  height: 100vh;
+  min-height: 100vh;
 }
 .logo {
   height: 64px;

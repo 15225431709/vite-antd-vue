@@ -105,6 +105,54 @@
         </a-tab-pane>
       </a-tabs>
     </div>
+
+    <div class="charts">
+      <div class="left">
+        <a-card title="线上热门搜索">
+          <template #extra><a href="#">more</a></template>
+          <div style="height: 450px">
+            <div class="top" style="display: flex">
+              <div style="width: 50%">
+                <div style="height: 32px; line-height: 32px">搜索用户数</div>
+                <div style="margin: 5px 0 10px 0">
+                  <span style="font-size: 1.25rem">12321</span>
+                  <span style="margin-left: 20px"
+                    >17.1 <img class="icon" src="../../../static/icon/up.png"
+                  /></span>
+                </div>
+                <area-chart
+                  size="small"
+                  height="40"
+                  container="left-chart"
+                  style="width: 80%"
+                ></area-chart>
+              </div>
+              <div style="width: 50%">
+                <div style="height: 32px; line-height: 32px">人均搜索次数</div>
+                <div style="margin: 5px 0 10px 0">
+                  <span style="font-size: 1.25rem">2.7</span>
+                  <span style="margin-left: 20px"
+                    >26.2 <img class="icon" src="../../../static/icon/down.png"
+                  /></span>
+                </div>
+                <area-chart
+                  size="small"
+                  height="40"
+                  container="right-chart"
+                  style="width: 80%"
+                ></area-chart>
+              </div>
+            </div>
+          </div>
+        </a-card>
+      </div>
+      <div class="right">
+        <a-card title="Default size card" style="width: 100%">
+          <template #extra><a href="#">more</a></template>
+          <div style="height: 450px"></div>
+        </a-card>
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts">

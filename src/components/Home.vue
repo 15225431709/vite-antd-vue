@@ -3,10 +3,6 @@
     <Sider :collapsed="collapsed"></Sider>
     <a-layout>
       <Header></Header>
-      <!-- <a-breadcrumb class="bread">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>An Application</a-breadcrumb-item>
-      </a-breadcrumb> -->
       <router-view class="page"/>
     </a-layout>
   </a-layout>
@@ -32,7 +28,7 @@ export default {
 </script>
 <style lang="scss" scope>
 .content {
-  height: 100vh;
+  // height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
