@@ -38,6 +38,8 @@
 <script lang="ts">
 import { reactive, toRefs } from "vue";
 import { menu } from "../../utils/menus";
+import { useRouter } from "vue-router";
+
 export default {
   name: "Menu",
   props: {
@@ -47,6 +49,8 @@ export default {
     },
   },
   setup(props) {
+    const router = useRouter();
+    console.log(props.collapsed);
     //初始化数据
     const state = reactive({
       menus: menu,
@@ -68,7 +72,9 @@ export default {
     };
     //子菜单，路由跳转
     const selectMenu = (keys: string) => {
-      console.log(keys);
+      router.push({
+        name: keys,
+      });
     };
     return {
       ...toRefs(state),

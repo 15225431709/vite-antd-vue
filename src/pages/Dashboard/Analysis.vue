@@ -110,7 +110,7 @@
       <div class="left">
         <a-card title="线上热门搜索">
           <template #extra><a href="#">more</a></template>
-          <div style="height: 450px">
+          <div style="height: 425px">
             <div class="top" style="display: flex">
               <div style="width: 50%">
                 <div style="height: 32px; line-height: 32px">搜索用户数</div>
@@ -124,7 +124,7 @@
                   size="small"
                   height="40"
                   container="left-chart"
-                  style="width: 80%"
+                  style="width: 80%; margin: 10px 0"
                 ></area-chart>
               </div>
               <div style="width: 50%">
@@ -139,17 +139,26 @@
                   size="small"
                   height="40"
                   container="right-chart"
-                  style="width: 80%"
+                  style="width: 80%; margin: 10px 0"
                 ></area-chart>
               </div>
+            </div>
+            <div class="table">
+              <a-table :columns="columns" :dataSource="data" size="small">
+              </a-table>
             </div>
           </div>
         </a-card>
       </div>
       <div class="right">
-        <a-card title="Default size card" style="width: 100%">
-          <template #extra><a href="#">more</a></template>
-          <div style="height: 450px"></div>
+        <a-card title="销售额" style="width: 100%">
+          <template #extra>
+            
+          </template>
+          <div style="height: 425px">
+            <div style="height: 36px; line-height: 36px; ">销售额</div>
+            <circle-chart height="360" container="circle"></circle-chart>
+          </div>
         </a-card>
       </div>
     </div>
@@ -159,11 +168,12 @@
 import { ref, reactive, toRefs, onMounted, nextTick } from "vue";
 import AreaChart from "../../components/utils/AreaChart.vue";
 import ColumnChart from "../../components/utils/ColumnChart.vue";
-
+import CircleChart from "../../components/utils/CircleChart.vue"
 export default {
   components: {
     AreaChart,
     ColumnChart,
+    CircleChart
   },
   setup() {
     const state = reactive({
@@ -174,7 +184,6 @@ export default {
         startTime: "",
         endTime: "",
       },
-
       active: 0,
       sales: [
         { name: "白鹭岛 1 号店", sale: "1234.56" },
@@ -184,6 +193,63 @@ export default {
         { name: "白鹭岛 5 号店", sale: "1234.56" },
         { name: "白鹭岛 6 号店", sale: "1234.56" },
         { name: "白鹭岛 6 号店", sale: "1234.56" },
+      ],
+      columns: [
+        {
+          title: "排名",
+          dataIndex: "key",
+          key: "key",
+        },
+        {
+          title: "搜索关键词",
+          dataIndex: "word",
+          key: "word",
+        },
+        {
+          title: "用户数",
+          dataIndex: "people",
+          key: "people",
+        },
+        {
+          title: "周涨幅 (%)",
+          dataIndex: "range",
+          key: "range",
+          sorter: (a: any, b: any) => {
+            return a.range - b.range;
+          },
+        },
+      ],
+      data: [
+        {
+          key: "1",
+          word: "John Brown",
+          people: 32,
+          range: -31,
+        },
+        {
+          key: "2",
+          word: "Jim Green",
+          people: 42,
+          range: -53,
+        },
+        {
+          key: "3",
+          word: "Joe Black",
+          people: 32,
+          range: 36,
+        },
+        {
+          key: "4",
+          word: "Joe Black",
+          people: 32,
+          range: 22,
+        },
+        {
+          key: "5",
+          word: "Joe Black",
+          people: 32,
+          range: 13,
+        }
       ],
       selectList: ["今日", "本周", "本月", "全年"],
     });

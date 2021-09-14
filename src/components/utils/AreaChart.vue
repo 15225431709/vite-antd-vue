@@ -3,7 +3,7 @@
 </template>
 <script>
 import { Chart } from "@antv/g2";
-import { reactive, onMounted, toRefs, watch } from "vue";
+import { reactive, onMounted, toRefs } from "vue";
 import { chartArea } from "../../utils/chart";
 
 export default {

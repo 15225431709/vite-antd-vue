@@ -65,8 +65,17 @@ const chartColumn: Array<any> = [{
     year: '12月',
     sales: 22
 }];
-
+//饼图
+const chartCircle: Array<object> = [
+    { type: '家用电器', value: 25 },
+    { type: '食用酒水', value: 18 },
+    { type: '个护健康', value: 12 },
+    { type: '服饰箱包', value: 15 },
+    { type: '母婴用品', value: 20 },
+    { type: '其他', value: 10 },
+]
 export {
     chartArea,
-    chartColumn
+    chartColumn,
+    chartCircle
 }

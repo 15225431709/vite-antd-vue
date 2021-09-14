@@ -104,8 +104,10 @@
     width: 96%;
     margin: 0.75rem 2%;
     display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     .left {
-        width: 48%;       
+        width: 48%;
     }
     .right {
         width: 48%;
