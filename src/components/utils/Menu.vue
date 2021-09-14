@@ -27,7 +27,7 @@
           <a-menu-item
             v-for="menu in item.subMenus"
             :key="menu.name"
-            @click="selectMenu(menu.name)"
+            @click="selectMenu(menu.name, item.key)"
             >{{ menu.title }}</a-menu-item
           >
         </a-sub-menu>

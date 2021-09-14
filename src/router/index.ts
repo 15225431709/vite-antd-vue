@@ -8,15 +8,15 @@ export default createRouter({
         {
         path: '/',
         component: () => import("../components/Home.vue"),
-        redirect: '/Analysis',
+        redirect: '/Dashboard/Analysis',
         children: [
             {
-                path: '/Analysis',
+                path: '/Dashboard/Analysis',
                 name: 'Analysis',
                 component: () => import("../pages/Dashboard/Analysis.vue")
             },
             {
-                path: '/Workplace',
+                path: '/Dashboard/Workplace',
                 name: 'Workplace',
                 component: () => import("../pages/Dashboard/Workplace.vue")
             },

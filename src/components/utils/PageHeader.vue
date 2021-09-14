@@ -1,9 +1,6 @@
 <template>
   <div class="header">
-    <a-page-header
-      title="工作台"
-      :breadcrumb="{ routes }"
-    />
+    <a-page-header style="padding: 10px 0" title="工作台" :breadcrumb="{ routes }" />
     <slot name="content"></slot>
   </div>
 </template>
@@ -11,17 +8,13 @@
 import { defineComponent } from "vue";
 const routes: Array<any> = [
   {
-    path: "index",
-    breadcrumbName: "First-level Menu",
+    path: "/",
+    breadcrumbName: "Dashboard",
   },
   {
-    path: "first",
-    breadcrumbName: "Second-level Menu",
-  },
-  {
-    path: "second",
-    breadcrumbName: "Third-level Menu",
-  },
+    path: "/Dashboard/Workplace",
+    breadcrumbName: "Workplace",
+  }
 ];
 export default defineComponent({
   setup() {
@@ -32,9 +25,10 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-    .header {
-        width: 100%;
-        padding: 10px 2%;
-        background: #fff;
-    }
+.header {
+  width: 100%;
+  padding: 10px 2%;
+  background: #fff;
+  margin-bottom: 1rem;
+}
 </style>

@@ -50,7 +50,7 @@
           <div class="card-number">75%</div>
           <div class="card-chart">
             <div style="width: 15rem">
-              <a-progress :percent="75" :show-info="false" />
+              <a-progress :percent="75" status="active" :show-info="false" />
             </div>
           </div>
         </div>
