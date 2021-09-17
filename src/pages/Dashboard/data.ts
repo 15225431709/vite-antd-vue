@@ -83,8 +83,43 @@ let activities: Array<object> = [
         createtime: "2021-10-01 00:00:00",
         src: "../../../static/image/avatar.png"
     },
+    {
+        name: "曲丽丽",
+        group: "高逼格设计天团",
+        action: "create",
+        action_name: "番组计划",
+        createtime: "2021-10-01 00:00:00",
+        src: "../../../static/image/avatar.png"
+    },
+]
+let teams: Array<object> = [{
+    id: 1,
+    name: '科学搬砖组',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png'
+},
+{
+    id: 2,
+    name: '程序员日常',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/cnrhVkzwxjPwAaCfPbdc.png'
+},
+{
+    id: 1,
+    name: '设计天团',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/gaOngJwsRYRaVAuXXcmB.png'
+},
+{
+    id: 1,
+    name: '中二少女团',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ubnKSIfAJTxIgXOKlciN.png'
+},
+{
+    id: 1,
+    name: '骗你学计算机',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WhxKECPNujWoWEFNdnJE.png'
+}
 ]
 export {
     gridList,
-    activities
+    activities,
+    teams
 }

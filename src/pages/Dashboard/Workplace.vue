@@ -74,7 +74,21 @@
             </div>
           </a-card>
           <a-card title="XX指数" :body-style="{ padding: 0 }" style="margin-top: 20px">
-            <radar-chart container="rader" height="360"></radar-chart>
+            <div style="width: 95%">
+              <radar-chart container="rader" height="360"></radar-chart>
+            </div>
+          </a-card>
+          <a-card title="团队" style="margin-top: 20px">
+            <div class="members">
+              <a-row>
+                <a-col :span="12" v-for="(item, index) in teams" :key="index">
+                  <a>
+                    <a-avatar size="small" :src="item.avatar" />
+                    <span class="member">{{ item.name }}</span>
+                  </a>
+                </a-col>
+              </a-row>
+            </div>
           </a-card>
         </a-col>
       </a-row>
@@ -84,14 +98,15 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue";
 import PageHeader from "../../components/utils/PageHeader.vue";
-import { gridList, activities } from "./data";
-import RadarChart from "../../components/utils/RadarChart.vue"
+import { gridList, activities, teams } from "./data";
+import RadarChart from "../../components/utils/RadarChart.vue";
 export default defineComponent({
   components: { PageHeader, RadarChart },
   setup() {
     const state = reactive({
       grids: gridList,
       activities: activities,
+      teams: teams,
     });
     return {
       ...toRefs(state),
@@ -208,6 +223,31 @@ export default defineComponent({
     font-size: 14px;
     margin-bottom: 13px;
     width: 25%;
+  }
+}
+.members {
+  a {
+    display: block;
+    margin: 12px 0;
+    line-height: 24px;
+    height: 24px;
+
+    .member {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.65);
+      line-height: 24px;
+      max-width: 100px;
+      vertical-align: top;
+      margin-left: 12px;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    &:hover {
+      span {
+        color: #1890ff;
+      }
+    }
   }
 }
 </style>

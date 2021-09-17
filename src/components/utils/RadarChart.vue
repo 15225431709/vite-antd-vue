@@ -116,7 +116,8 @@ export default {
         lineWidth: 1,
         fillOpacity: 1,
       });
-      chart.area().position("item*score").color("user");
+      //线模式和区域模式
+      // chart.area().position("item*score").color("user"); 
       chart.render();
     };
     return {
