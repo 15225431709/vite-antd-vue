@@ -58,14 +58,12 @@ export default {
         itemTpl:
           '<li class="g2-tooltip-list-item"><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>',
       });
-
       chart
         .interval()
         .adjust("stack")
         .position("value")
         .color("type")
         .shape("slice-shape");
-
       chart.render();
     };
 

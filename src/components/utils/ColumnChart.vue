@@ -41,7 +41,7 @@ export default {
         padding = [25, 25, 50, 50];
       }
       const chart = new Chart({
-        container: props.container, // 指定图表容器 ID
+        container: props.container, // 指定图表容器 ID 
         autoFit: true,
         height: Number(props.height), // 指定图表高度
         renderer: "svg",

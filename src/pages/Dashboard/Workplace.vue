@@ -73,7 +73,9 @@
               <a-button size="small" type="primary">添加</a-button>
             </div>
           </a-card>
-          <a-card title="XX指数" :body-style="{ padding: 0 }" style="margin-top: 20px"></a-card>
+          <a-card title="XX指数" :body-style="{ padding: 0 }" style="margin-top: 20px">
+            <radar-chart container="rader" height="360"></radar-chart>
+          </a-card>
         </a-col>
       </a-row>
     </div>
@@ -83,8 +85,9 @@
 import { defineComponent, reactive, toRefs } from "vue";
 import PageHeader from "../../components/utils/PageHeader.vue";
 import { gridList, activities } from "./data";
+import RadarChart from "../../components/utils/RadarChart.vue"
 export default defineComponent({
-  components: { PageHeader },
+  components: { PageHeader, RadarChart },
   setup() {
     const state = reactive({
       grids: gridList,
