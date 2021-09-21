@@ -16,13 +16,13 @@
           </a-form-item>
           <a-form-item label="收款账号">
             <a-row gutter="5">
-              <a-col span="6">
+              <a-col span="8">
                 <a-select v-model:value="formState.accountType">
                   <a-select-option value="alipay">支付宝</a-select-option>
                   <a-select-option value="wechat">微信</a-select-option>
                 </a-select>
               </a-col>
-              <a-col span="18">
+              <a-col span="16">
                 <a-input v-model:value="formState.acceptAccount" />
               </a-col>
             </a-row>
@@ -34,7 +34,7 @@
             <a-input v-model:value="formState.payAccount" />
           </a-form-item>
           <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-            <a-button type="primary" @click="next">提交</a-button>
+            <a-button type="primary" @click="next">下一步</a-button>
             <a-button style="margin-left: 10px">取消</a-button>
           </a-form-item>
         </a-form>
