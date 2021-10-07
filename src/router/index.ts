@@ -33,7 +33,13 @@ export default createRouter({
                     path: "/Form/stepForm",
                     name: "Step",
                     component: () => import("../pages/Form/StepForm.vue")
-                }
+                },
+                //高级表单
+                {
+                    path: "/Form/advancedForm",
+                    name: "Advanced",
+                    component: () => import("../pages/Form/AdvancedForm.vue")
+                },
             ]
         }
     ]
