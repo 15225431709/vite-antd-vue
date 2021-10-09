@@ -56,7 +56,7 @@
         </a-form>
       </a-card>
       <div style="background: #fff; padding: 20px 0">
-        <a-table :columns="columns"  style="width: 98%; margin: 0 1%" ></a-table>
+        <a-table :columns="columns"  style="width: 98%; margin: 0 1%"></a-table>
       </div>
     </div>
   </div>

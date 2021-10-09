@@ -40,6 +40,30 @@ export default createRouter({
                     name: "Advanced",
                     component: () => import("../pages/Form/AdvancedForm.vue")
                 },
+                //表格
+                {
+                    path: "/List/tableList",
+                    name: "Table",
+                    component: () => import("../pages/List/Table.vue")
+                },
+                //基础列表
+                {
+                    path: "/List/basicList",
+                    name: "BasicList",
+                    component: () => import("../pages/List/BasicList.vue")
+                },
+                //卡片列表
+                {
+                    path: "/List/cardList",
+                    name: "Card",
+                    component: () => import("../pages/List/Card.vue")
+                },
+                //查询列表
+                {
+                    path: "/List/searchList",
+                    name: "SearchList",
+                    component: () => import("../pages/List/SearchList.vue")
+                }
             ]
         }
     ]
