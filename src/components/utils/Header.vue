@@ -43,6 +43,7 @@ export default {
 .header {
   background: #fff;
   padding: 0;
+  width: 100%;
 }
 .align {
   text-align: center;

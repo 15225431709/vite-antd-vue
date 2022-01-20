@@ -30,7 +30,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .icon {
-  // color: #fff;
   font-size: 1rem;
+}
+.icon:hover {
+  cursor: pointer;
 }
 </style>
