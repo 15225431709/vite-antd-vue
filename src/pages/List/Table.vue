@@ -31,7 +31,7 @@
           <a-button type="primary"> + 新建 </a-button>
         </div>
         <div class="table-alert">
-            <a-alert message="已选择: 0服务调用次数总计 0 次" type="info"  show-icon/>
+            <a-alert message="已选择: 0 服务调用次数总计 0 次" type="info" show-icon/>
         </div>
         <a-table :columns="columns" style="margin: 5px 0"></a-table>
       </div>

@@ -55,15 +55,14 @@
           </div>
         </a-form>
       </a-card>
-      <div style="background: #fff; padding: 20px 0">
-        <a-table :columns="columns"  style="width: 98%; margin: 0 1%"></a-table>
-      </div>
+      <custom-table></custom-table>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { Moment } from "moment";
 import { defineComponent, reactive, UnwrapRef } from "vue";
+import customTable from "./advanced/table.vue"
 interface StoreState {
   storeName: string;
   storeHost: string;
@@ -80,32 +79,11 @@ interface TaskState {
   taskTime: Moment | undefined;
   taskType: string;
 }
-const columns = [
-  {
-    title: "成员姓名",
-    dataIndex: "name",
-    width: "25%",
-    slots: { customRender: "name" },
-  },
-  {
-    title: "工号",
-    dataIndex: "age",
-    width: "15%",
-    slots: { customRender: "age" },
-  },
-  {
-    title: "所属部门",
-    dataIndex: "address",
-    width: "40%",
-    slots: { customRender: "address" },
-  },
-  {
-    title: "操作",
-    dataIndex: "operation",
-    slots: { customRender: "operation" },
-  },
-];
+
 export default defineComponent({
+  components: {
+    customTable
+  },
   setup() {
     const formState: UnwrapRef<StoreState> = reactive({
       storeName: "",
@@ -127,7 +105,6 @@ export default defineComponent({
     return {
       formState,
       formTask,
-      columns,
     };
   },
 });
