@@ -26,7 +26,7 @@
                 <a-radio-button value="doing">进行中</a-radio-button>
                 <a-radio-button value="loading">等待中</a-radio-button>
               </a-radio-group>
-              <a-input-search       
+              <a-input-search
                 v-model:value="search"
                 placeholder="查询"
                 @search="onSearch"
@@ -37,6 +37,7 @@
         </template>
         <div class="custom-content">
           <a-button class="block" type="dashed" block><strong>+ </strong>添加</a-button>
+          <list></list>
         </div>
       </a-card>
     </div>
@@ -44,8 +45,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue";
-
+import list from "./basic/list.vue"
 export default defineComponent({
+  components: {
+    list
+  },
   setup() {
     const state = reactive({
       tab: "all",
@@ -70,13 +74,13 @@ export default defineComponent({
 .card {
   margin: 20px 0;
   .custom-title {
-    display: flex;   
+    display: flex;
     .render-title {
       width: 50%;
     }
     .render-search {
       width: 50%;
-      text-align:right;
+      text-align: right;
     }
     .tabs {
       margin: 0 25px;
@@ -102,5 +106,68 @@ export default defineComponent({
 .clock {
   width: 100%;
   margin: 10px 0;
+}
+.custom-list {
+  width: 100%;
+  margin: 20px 0;
+  .list-item {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e8e8e8;
+    align-items: center;
+    .avatar {
+      width: 48px;
+      height: 48px;
+      margin-right: 0.75rem;
+    }
+    .desc-area {
+      width: 780px;
+      margin-right: 20px;
+      height: 48px;
+      .desc-title {
+        margin-bottom: 4px;
+        color: #000000d9;
+        font-size: 14px;
+      }
+      .desc-text {
+        color: #666;
+        font-size: 14px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .status-area {
+      width: 80px;
+      margin-right: 20px;
+      font-size: 14px;
+      height: 56px;
+    }
+    .time-area {
+      width: 160px;
+      margin-right: 20px;
+      font-size: 14px;
+      height: 56px;
+    }
+    .progress-area {
+      width: 200px;
+      margin-right: 30px;
+    }
+    .operation-area {
+      height: 56px;
+      // width: 120px;
+      // line-height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .status-title {
+      margin-bottom: 4px;
+      color: #000000d9;
+    }
+    .status-text {
+      color: #666;
+    }
+  }
 }
 </style>
