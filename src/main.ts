@@ -7,10 +7,12 @@ import 'ant-design-vue/dist/antd.css';
 import ICON from "./utils/Icon.vue";
 import PageHeader from './components/utils/PageHeader.vue'
 import * as G2 from '@antv/g2'
+import flexible  from "./flexible"
 const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(Antd)
+app.use(flexible)
 app.component('ICON', ICON)
 app.component('page-header', PageHeader)
 app.config.globalProperties.$G2 = G2

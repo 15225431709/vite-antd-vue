@@ -74,7 +74,8 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .line {
-  line-height: 1.5rem;
+  line-height: .3rem;
+  font-size: .2rem;
 }
 .top {
   width: 70%;

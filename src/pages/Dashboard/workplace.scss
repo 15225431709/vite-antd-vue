@@ -20,20 +20,20 @@
         display: flex;
         justify-content: flex-start;
         .avatar {
-            width: 4.5rem;
-            height: 4.5rem;
+            width: .9rem;
+            height: .9rem;
             border-radius: 50%;
         }
         .account-desc {
-            margin-left: 1rem;
+            margin-left: .2rem;
             .title {
-                font-size: 1.25rem;
-                line-height: 2.5rem;
-                height: 2.5rem;
+                font-size: .25rem;
+                line-height: .5rem;
+                height: .5rem;
             }
             .desc {
-                height: 2rem;
-                line-height: 2rem;
+                height: .4rem;
+                line-height: .4rem;
                 color: #000;
                 opacity: 0.45;
             }
@@ -43,19 +43,19 @@
         width: 40%;
         display: flex;
         justify-content: flex-end;
-        padding-right: 1.25rem;
+        padding-right: .25rem;
         .item {
-            margin: 0 1.25rem;
-            padding-top: 0.25rem;
+            margin: 0 .25rem;
+            padding-top: 0.05rem;
             .label {
-                height: 1.75rem;
-                line-height: 1.75rem;
+                height: .35rem;
+                line-height: .35rem;
                 opacity: 0.45;
             }
             .value {
-                height: 2.75rem;
-                line-height: 2.75rem;
-                font-size: 1.25rem;
+                height: .55rem;
+                line-height: .55rem;
+                font-size: .25rem;
             }
         }
     }
@@ -63,17 +63,16 @@
 
 .grid {
     width: 33.3%;
-    height: 8rem;
-    padding: 16px 24px;
+    padding: .25rem .375rem;
     .grid-title {
         display: flex;
         align-items: center;
     }
     .grid-image {
-        width: 1.25rem;
-        height: 1.25rem;
+        width: .25rem;
+        height: .25rem;
         border-radius: 50%;
-        margin-right: 0.5rem;
+        margin-right: 0.125rem;
     }
     .grid-desc {
         line-height: 22px;
@@ -94,8 +93,8 @@
 .list {
     margin: 20px 0;
     .avatar {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: .44rem;
+        height: .44rem;
         border-radius: 50%;
     }
 }

@@ -29,6 +29,6 @@ export default defineComponent({
   width: 100%;
   padding: 10px 2%;
   background: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: .2rem;
 }
 </style>

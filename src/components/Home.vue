@@ -28,11 +28,10 @@ export default {
 </script>
 <style lang="scss" scope>
 .content {
-  // height: 100vh;
-  width: 100%;
   margin: 0;
   padding: 0;
 }
+
 .bread {
     padding: .5rem;
     font-weight: bolder;

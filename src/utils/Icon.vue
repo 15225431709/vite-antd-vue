@@ -15,7 +15,7 @@ export default {
     },
     customStyle: {
       type: Object,
-      default: {'color': '#fff','font-size': '1rem'}
+      default: {'color': '#fff','font-size': '.25rem'}
     }
   },
   setup(props) {
@@ -30,7 +30,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .icon {
-  font-size: 1rem;
+  font-size: .25rem;
 }
 .icon:hover {
   cursor: pointer;

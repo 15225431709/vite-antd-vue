@@ -57,7 +57,7 @@ export default {
       openKeys: ["Dashboard"],
       iconstyle: {
         color: "#d81e06",
-        fontSize: "1.5rem",
+        fontSize: "0.25rem",
       },
     });
     //监听菜单选择
@@ -96,10 +96,14 @@ export default {
   display: flex;
   justify-content: left;
   .logo-title {
-    font-size: 0.88rem;
+    font-size: 0.2rem;
     font-weight: bolder;
     color: #fff;
-    margin-left: 0.5rem;
+    margin-left: 10px;
+    max-width: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>
