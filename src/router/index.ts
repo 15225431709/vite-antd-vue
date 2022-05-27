@@ -20,7 +20,7 @@ export default createRouter({
                 {
                     path: '/Dashboard/Workplace',
                     name: 'Workplace',
-                    component: () => import("../pages/Dashboard/Workplace.vue")
+                    component: () => import("../pages/Dashboard/Workplace.vue") 
                 },
                 //基础表单
                 {
