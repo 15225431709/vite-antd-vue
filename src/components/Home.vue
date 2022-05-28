@@ -19,7 +19,7 @@ export default {
     Header,
   },
   setup() {
-    const collapsed = ref<boolean>(false);
+    const collapsed = ref<boolean>(true);
     return {
       collapsed,
     };

@@ -4,13 +4,13 @@
       <a-row type="flex" justify="center" align="top">
         <a-col :span="1" class="align">
           <ICON
-            :name="'#icon-hide'"
+            name="#icon-hide"
             :customStyle="{ color: '#001529', 'font-size': '.25rem' }"
           ></ICON>
         </a-col>
         <a-col :span="1" class="align">
           <ICON
-            :name="'#icon-reload'"
+            name="#icon-reload"
             :customStyle="{ color: '#001529', 'font-size': '.25rem' }"
           ></ICON>
         </a-col>
