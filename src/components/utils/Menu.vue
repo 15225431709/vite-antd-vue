@@ -42,15 +42,15 @@ import { useRouter } from "vue-router";
 
 export default {
   name: "Menu",
-  // props: {
-  //   collapsed: {
-  //     type: Boolean,
-  //     default: true,
-  //   },
-  // },
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: true,
+    },
+  },
   setup(props) {
     const router = useRouter();
-    // console.log(props.collapsed);
+    console.log(props);
     //初始化数据
     const state = reactive({
       menus: menu,
@@ -93,7 +93,6 @@ export default {
   height: 64px;
   line-height: 64px;
   padding: 0 12px;
-  // color: red;
   display: flex;
   justify-content: left;
   .logo-title {

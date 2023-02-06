@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <page-header></page-header>
+    <page-header text="查询表格"></page-header>
     <div class="content">
       <a-form :modal="form">
         <div class="form">

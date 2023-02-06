@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <page-header></page-header>
+    <page-header text="标准列表"></page-header>
     <div class="content">
       <a-card class="card">
         <a-card-grid class="item" :hoverable="false">

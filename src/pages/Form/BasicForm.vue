@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <page-header></page-header>
+    <page-header :margin="false"></page-header>
     <div class="form">
       <a-form :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-form-item label="标题" required>
@@ -89,7 +89,10 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 5px;
-  background: #fff;
+  padding: 4px 0;
+}
+.form {
+	background: #fff;
+	padding: .25rem 0;
 }
 </style>

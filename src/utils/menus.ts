@@ -16,7 +16,7 @@ export const menu: Array<any> = [
         title: '列表页', icon: "#icon-table", key: "List", subMenus: [
             { title: "查询表格", name: "Table" },
             { title: "标准列表", name: "BasicList" },
-            { title: "卡片列表", name: "Card" },
+            { title: "卡片列表", name: "CardList" },
             { title: "搜索列表", name: "SearchList" }
         ]
     },

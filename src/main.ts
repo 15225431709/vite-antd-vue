@@ -16,5 +16,4 @@ app.use(flexible)
 app.component('ICON', ICON)
 app.component('page-header', PageHeader)
 app.config.globalProperties.$G2 = G2
-// G2.Global.renderer = 'svg';
 app.mount("#app")

@@ -55,8 +55,8 @@ export default createRouter({
                 //卡片列表
                 {
                     path: "/List/cardList",
-                    name: "Card",
-                    component: () => import("../pages/List/Card.vue")
+                    name: "CardList",
+                    component: () => import("../pages/List/CardList.vue")
                 },
                 //查询列表
                 {

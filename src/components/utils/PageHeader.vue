@@ -1,34 +1,43 @@
 <template>
-  <div class="header">
-    <a-page-header style="padding: 10px 0" title="工作台" :breadcrumb="{ routes }" />
-    <slot name="content"></slot>
-  </div>
+	<div class="page-header">
+		<div class="title" :class="margin?'margin':''">{{text}}</div>
+		<slot name="content"></slot>
+	</div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-const routes: Array<any> = [
-  {
-    path: "/",
-    breadcrumbName: "Dashboard",
-  },
-  {
-    path: "/Dashboard/Workplace",
-    breadcrumbName: "Workplace",
-  }
-];
-export default defineComponent({
-  setup() {
-    return {
-      routes,
-    };
-  },
-});
+	import {
+		defineComponent
+	} from "vue";
+	export default defineComponent({
+		props: {
+			text: {
+				type: String,
+				default: ""
+			},
+			margin: {
+				type: Boolean,
+				default: true
+			}
+		}
+	});
 </script>
 <style scoped>
-.header {
-  width: 100%;
-  padding: 10px 2%;
-  background: #fff;
-  margin-bottom: .2rem;
-}
+	.page-header {
+		width: 100%;
+		padding: .1rem .25rem;
+		background: #fff;
+	}
+
+	.margin {
+		margin-bottom: .25rem;
+	}
+
+	.title {
+		height: .5rem;
+		line-height: .5rem;
+		font-size: .25rem;
+		font-weight: 550;
+		color: #333;
+		margin: 10px;
+	}
 </style>
