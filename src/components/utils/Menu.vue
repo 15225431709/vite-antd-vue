@@ -1,7 +1,6 @@
 <template>
   <div style="background: rgb(0, 21, 41)">
-    <a-layout-sider
-      :inline-collapsed="collapsed"
+    <a-layout-sider     
       :trigger="null"
       breakpoint="lg"
       collapsible
@@ -18,6 +17,7 @@
         :style="{ borderRight: 0 }"
         theme="dark"
         @openChange="onOpenChange"
+        :inline-collapsed="collapsed"
       >
         <a-sub-menu v-for="item in menus" :key="item.key">
           <template #icon>
@@ -42,23 +42,24 @@ import { useRouter } from "vue-router";
 
 export default {
   name: "Menu",
-  props: {
-    collapsed: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  // props: {
+  //   collapsed: {
+  //     type: Boolean,
+  //     default: true,
+  //   },
+  // },
   setup(props) {
     const router = useRouter();
-    console.log(props.collapsed);
+    // console.log(props.collapsed);
     //初始化数据
     const state = reactive({
       menus: menu,
       openKeys: ["Dashboard"],
       iconstyle: {
         color: "#d81e06",
-        fontSize: "1.5rem",
+        fontSize: "0.25rem",
       },
+      collpased: true
     });
     //监听菜单选择
     const onOpenChange = (keys: string[]) => {
@@ -96,10 +97,14 @@ export default {
   display: flex;
   justify-content: left;
   .logo-title {
-    font-size: 0.88rem;
+    font-size: 0.2rem;
     font-weight: bolder;
     color: #fff;
-    margin-left: 0.5rem;
+    margin-left: 10px;
+    max-width: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

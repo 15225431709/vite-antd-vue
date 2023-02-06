@@ -50,8 +50,8 @@ export default defineComponent({
   margin-left: 20%;
   padding: 20px 20px;
   .result-item {
-    height: 3rem;
-    line-height: 3rem;
+    height: .6rem;
+    line-height: .6rem;
   }
 }
 .end {

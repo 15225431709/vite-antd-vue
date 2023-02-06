@@ -4,14 +4,14 @@
       <a-row type="flex" justify="center" align="top">
         <a-col :span="1" class="align">
           <ICON
-            :name="'#icon-hide'"
-            :customStyle="{ color: '#001529', 'font-size': '1rem' }"
+            name="#icon-hide"
+            :customStyle="{ color: '#001529', 'font-size': '.25rem' }"
           ></ICON>
         </a-col>
         <a-col :span="1" class="align">
           <ICON
-            :name="'#icon-reload'"
-            :customStyle="{ color: '#001529', 'font-size': '1rem' }"
+            name="#icon-reload"
+            :customStyle="{ color: '#001529', 'font-size': '.25rem' }"
           ></ICON>
         </a-col>
         <a-col :span="18"></a-col>
@@ -49,8 +49,8 @@ export default {
   text-align: center;
 }
 .avatar {
-  width: 2rem;
-  height: 2rem;
+  width: .5rem;
+  height: .5rem;
   border-radius: 50%;
   margin: 0 5px;
 }

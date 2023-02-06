@@ -60,7 +60,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .line {
-  line-height: 1.5rem;
+  line-height: .3rem;
 }
 .top {
   width: 70%;
@@ -80,8 +80,8 @@ export default defineComponent({
   width: 80%;
   margin: 15px 10% 0 10%;
   .item {
-    height: 3rem;
-    line-height: 3rem;
+    height: .6rem;
+    line-height: .6rem;
   }
 }
 </style>

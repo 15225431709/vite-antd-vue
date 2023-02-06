@@ -6,10 +6,10 @@
           <div class="card-title">总销售额</div>
           <div class="card-number">￥126,560</div>
           <div class="card-chart">
-            <span style="margin: 0 0.5rem"
+            <span style="margin: 0 0.1rem"
               >周同比：12% <img class="icon" src="../../../static/icon/up.png"
             /></span>
-            <span style="margin: 0 0.5rem"
+            <span style="margin: 0 0.1rem"
               >日同比：11% <img class="icon" src="../../../static/icon/down.png"
             /></span>
           </div>
@@ -49,16 +49,16 @@
           <div class="card-title">运营活动效果</div>
           <div class="card-number">75%</div>
           <div class="card-chart">
-            <div style="width: 15rem">
+            <div style="width: 3rem">
               <a-progress :percent="75" status="active" :show-info="false" />
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <span style="margin: 0 0.5rem"
+          <span style="margin: 0 0.1rem"
             >周同比：12% <img class="icon" src="../../../static/icon/up.png"
           /></span>
-          <span style="margin: 0 0.5rem"
+          <span style="margin: 0 0.1rem"
             >日同比：11% <img class="icon" src="../../../static/icon/down.png"
           /></span>
         </div>
@@ -115,7 +115,7 @@
               <div style="width: 50%">
                 <div style="height: 32px; line-height: 32px">搜索用户数</div>
                 <div style="margin: 5px 0 10px 0">
-                  <span style="font-size: 1.25rem">12321</span>
+                  <span style="font-size: .25rem">12321</span>
                   <span style="margin-left: 20px"
                     >17.1 <img class="icon" src="../../../static/icon/up.png"
                   /></span>
@@ -130,7 +130,7 @@
               <div style="width: 50%">
                 <div style="height: 32px; line-height: 32px">人均搜索次数</div>
                 <div style="margin: 5px 0 10px 0">
-                  <span style="font-size: 1.25rem">2.7</span>
+                  <span style="font-size: .25rem">2.7</span>
                   <span style="margin-left: 20px"
                     >26.2 <img class="icon" src="../../../static/icon/down.png"
                   /></span>
